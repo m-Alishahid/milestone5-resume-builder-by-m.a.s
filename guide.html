@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More About Resume Builder</title>
+
+    <style>
+          /* General Reset */
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+
+        /* Navbar styling */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: black;
+            color: white;
+            z-index: 2;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc00;
+        }
+
+        /* Hamburger icon styling */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+        }
+
+        /* Background image styling */
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('./pexels-goumbik-317356.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* Main content styling */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            color: black;            
+            text-align: center;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        /* Button styling */
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn-see-demo {
+            background-color: #ffcc00;
+            color: black;
+        }
+
+        .btn-create {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Responsive styling */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide links on mobile by default */
+                flex-direction: column;
+                background-color: rgba(0, 0, 0, 0.8);
+                position: absolute;
+                top: 60px;
+                right: 0;
+                width: 100%;
+                padding: 15px;
+            }
+            
+            .nav-links a {
+                margin: 10px 0;
+            }
+
+            .hamburger {
+                display: block; /* Show hamburger icon on mobile */
+            }
+
+            .nav-links.active {
+                display: flex; /* Show links when active class is added */
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 10px 20px;
+            }
+        }
+
+        /* Main Content Styling */
+    .content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: 120px;
+        background-color: #f4f4f4;
+        color: #333;
+        text-align: center;
+        z-index: 1;
+        padding-bottom: 50px;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: #007bff;
+        font-weight: bold;
+        transition: color 0.3s ease;
+    }
+
+    h1:hover {
+        color: #ffcc00;
+    }
+
+    p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin-bottom: 40px;
+        line-height: 1.8;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        color: #555;
+        transition: color 0.3s ease;
+    }
+
+    p:hover {
+        color: #007bff;
+    }
+
+    .section {
+        margin-top: 40px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        width: 90%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .section:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .section h2 {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+        color: #007bff;
+    }
+
+    .section p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #666;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 20px;
+        margin-top: 40px;
+        justify-content: center;
+    }
+
+    .btn {
+        padding: 15px 30px;
+        font-size: 1rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+
+    .btn-create {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-create:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+
+    /* Responsive styling */
+    @media (max-width: 768px) {
+        h1 {
+            font-size: 2rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .section {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+        }
+    }
+</style>
+
+
+
+
+    </style>
+</head>
+
+<body>
+
+
+   
+
+ <!-- Navbar -->
+ <div class="navbar">
+    <div class="logo">
+        <img src="./logo.jpg" alt="Logo"> <!-- Replace with your logo path -->
+        <span class="title">Maker</span>
+    </div>
+    <div class="nav-links">
+        <a href="./main.html">Home</a>
+        <a href="./guide.html">Learn Creation</a>
+        <a href="./contact.html">Contact</a>
+    </div>
+    <div class="hamburger" onclick="toggleMenu()">☰</div>
+</div>
+
+    <!-- Background Image -->
+    <div class="background-image"></div>
+
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Learn More About Resume Builder</h1>
+        <p>Our Resume Builder helps you create professional resumes in minutes. With an easy-to-use interface and a variety of templates, you can quickly enter your details and download a polished resume to stand out to potential employers.</p>
+
+        <div class="section">
+            <h2>Why Choose Our Resume Builder?</h2>
+            <p>Our platform provides you with a simple and effective way to create a resume that reflects your skills and experience. Whether you're a fresh graduate or an experienced professional, our templates are designed to highlight your strengths and make your resume stand out.</p>
+        </div>
+
+        <div class="section">
+            <h2>Step-by-Step Resume Creation</h2>
+            <p>We guide you through every step of creating your resume: entering personal information, adding skills and work experience, including education and certifications, and previewing your resume. Once you're satisfied, you can download it as a high-quality PDF.</p>
+        </div>
+
+        <div class="section">
+            <h2>Start Creating Today!</h2>
+            <p>With a few simple steps, you can have your resume ready in no time. Start now and make a lasting impression with a professionally crafted resume.</p>
+        </div>
+
+        <div class="buttons">
+         
+            <a href="./main.html"><button class="btn btn-create">Get started</button></a>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+    
+</body>
+
+</html>
